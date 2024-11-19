@@ -28,6 +28,14 @@ git config --global user.name XXXX  # 设置用户名
 git config --global user.email xxxxxxxxx  # 设置邮箱
 git config --global credential.helper store  # 长期存储密码
 
+# 安装Hack字体
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
+unzip ./Hack.zip
+mkdir -p ~/.local/share/fonts
+cp ./Hack*.ttf -t ~/.local/share/fonts
+fc-cache -f -v
+# 重启终端 选择Hack Nerd Font字体
+
 # zsh
 sudo apt-get install -y zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
