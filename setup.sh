@@ -32,6 +32,8 @@ git config --global user.email xxxxxxxxx  # 设置邮箱
 git config --global credential.helper store  # 长期存储密码
 
 # 安装Hack字体
+# 搜索图形 https://www.nerdfonts.com/cheat-sheet
+# 带补丁 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Bold
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
 unzip ./Hack.zip
 mkdir -p ~/.local/share/fonts
