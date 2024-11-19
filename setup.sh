@@ -3,6 +3,7 @@
 
 # install
 sudo apt install build-essential
+sudo apt-get install clangd
 sudo apt install tree
 sudo apt install curl
 sudo apt install net-tools
@@ -12,6 +13,8 @@ sudo apt-get install neofetch
 sudo apt install lcov
 sudo apt-get install bear
 sudo apt-get install tofrodos  # fromdos/todos
+sudo apt install python3-pip  # sudo mv /usr/lib/python3.12/EXTERNALLY-MANAGED /usr/lib/python3.12/EXTERNALLY-MANAGED.bak
+echo "export PATH=$PATH:~/.local/bin/" >> ~/.zshrc
 
 # remove
 sudo apt-get remove libreoffice-common
@@ -53,19 +56,32 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 #
 #重启终端配置powerlevel10k
 
+# fzf
+sudo apt-get install fzf
+# vim ~/.zshrc
+# FZF
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# export FZF_DEFAULT_OPTS='--height 90% --layout=reverse --border --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
+# export FZF_COMPLETION_TRIGGER='\'
+# export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
+
+
 # ctags
 sudo apt-get install autoconf
-sudo apt-get install ctags -y
+sudo apt-get install universal-ctags  # sudo apt-get install ctags -y
 # 设置全局git忽略
 git config --global core.excludesfile ~/.gitignore_global
 touch ~/.gitignore_global
 echo ".tags" >> ~/.gitignore_global
 
-# neovim
+# neovim lazyvim
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt-get update
 sudo apt-get install neovim
-git clone git@github.com:KyleDeng/nvim.git
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+# 打开一次nvim 等待插件安装完成
+rm -rf ~/.config/nvim
+git clone https://github.com/KyleDeng/nvim.git ~/.config/nvim
 # 按照readme配置
 
 # ranger
@@ -73,6 +89,10 @@ sudo apt-get install ranger
 ranger --copy-config=all
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 echo "default_linemode devicons" >> $HOME/.config/ranger/rc.conf
+echo "
+# ranger
+alias ra=\"ranger\"
+" >> ~/.zshrc
 
 # tmux
 sudo apt install tmux -y
@@ -102,12 +122,10 @@ pip3 install poetry
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
 
-# docker
-
-
 # go
 
 
 # nodejs
-
+sudo apt-get install npm
+sudo npm install --global yarn
 
