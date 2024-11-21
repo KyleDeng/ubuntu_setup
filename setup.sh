@@ -7,9 +7,11 @@ sudo apt-get upgrade
 sudo apt install software-properties-common -y
 sudo add-apt-repository ppa:deadsnakes/ppa  # 关闭云枢
 sudo apt-get update
-sudo apt install pipx  # 打开云枢
+sudo apt install pipx -y  # 打开云枢
 sudo ln -s /usr/bin/pipx /usr/bin/pip
+sudo apt install python3-pip -y  # sudo mv /usr/lib/python3.12/EXTERNALLY-MANAGED /usr/lib/python3.12/EXTERNALLY-MANAGED.bak
 sudo apt install python3-venv
+# export PATH=$PATH:$HOME/.local/bin/
 # 重启一次
 
 # install
@@ -24,7 +26,6 @@ sudo apt-get install neofetch -y
 sudo apt install lcov -y
 sudo apt-get install bear -y
 sudo apt-get install tofrodos -y  # fromdos/todos
-sudo apt install python3-pip -y  # sudo mv /usr/lib/python3.12/EXTERNALLY-MANAGED /usr/lib/python3.12/EXTERNALLY-MANAGED.bak
 # 重启一次
 
 # nodejs
@@ -36,7 +37,7 @@ sudo apt-get remove libreoffice-common
 sudo apt-get remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot gnome-mines cheese transmission-common gnome-orca gnome-sudoku
 
 # cmake
-sudo apt install cmake  # cmake --version
+sudo apt install cmake -y  # cmake --version
 sudo apt-get install cmake-curses-gui  # ccmake --version
 
 # git
@@ -49,9 +50,10 @@ git config --global credential.helper store  # 长期存储密码
 # 安装Hack字体
 # 搜索图形 https://www.nerdfonts.com/cheat-sheet
 # 带补丁 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Bold
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
-unzip ./Hack.zip
-mkdir -p ~/.local/share/fonts                                                                  
+# wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
+# unzip ./Hack.zip
+mkdir -p ~/.local/share/fonts  
+git clone https://github.com/KyleDeng/ubuntu_setup.git --depth=1
 cp ./Hack*.ttf -t ~/.local/share/fonts
 fc-cache -f -v
 # 重启终端 选择Hack Nerd Font字体
@@ -59,7 +61,7 @@ fc-cache -f -v
 # zsh
 sudo apt-get install -y zsh          
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-sudo apt-get install powerline
+sudo apt-get install powerline -y
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
