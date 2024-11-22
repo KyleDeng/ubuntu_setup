@@ -78,11 +78,13 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # fzf
 sudo apt-get install fzf
 # vim ~/.zshrc
+"
 # FZF
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# export FZF_DEFAULT_OPTS='--height 90% --layout=reverse --border --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
-# export FZF_COMPLETION_TRIGGER='\'
-# export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--height 90% --layout=reverse --border --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
+export FZF_COMPLETION_TRIGGER='\'
+export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
+"
 
 
 # ctags
@@ -125,12 +127,14 @@ sudo apt-get install samba-common -y
 sudo mkdir -p /home/share
 sudo chmod 777 -R /home/share
 sudo vi /etc/samba/smb.conf
-# [share]
-#     path = /home/share
-#     available = yes
-#     browseable = yes
-#     public = no
-#     writable = yes
+"
+[share]
+    path = /home/share
+    available = yes
+    browseable = yes
+    public = no
+    writable = yes
+"
 sudo smbpasswd -a huatuo
 sudo service smbd restart
 
@@ -168,6 +172,34 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
 
 # go
+
+# 删除snap
+snap remove --purge firefox
+snap remove --purge snap-store
+snap remove --purge gnome-42-2204
+snap remove --purge gtk-common-themes
+snap remove --purge snapd-desktop-integration
+snap remove --purge bare
+snap remove --purge firmware-updater
+snap remove --purge canonical-livepatch
+snap remove --purge core22
+snap remove --purge snapd
+
+sudo apt remove --autoremove snapd -y
+cat /etc/apt/preferences.d/nosnap.pref
+"
+# To prevent repository packages from triggering the installation of snap,
+# this file forbids snapd from being installed by APT.
+
+Package: snapd
+Pin: release a=*
+Pin-Priority: -10
+"
+sudo apt update
+rm -rf ~/snap/
+sudo rm -rf /snap/
+sudo rm -rf /var/cache/snapd/
+sudo rm -rf /var/lib/snapd/
 
 # clean
 sudo apt autoclean
