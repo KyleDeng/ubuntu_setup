@@ -97,10 +97,10 @@ echo ".tags" >> ~/.gitignore_global
 # sudo add-apt-repository ppa:neovim-ppa/unstable
 # sudo apt-get update
 sudo apt-get install neovim -y
-git clone https://github.com/LazyVim/starter ~/.config/nvim  # git@github.com:KyleDeng/nvim.git
+git clone https://github.com/LazyVim/starter ~/.config/nvim
 # 打开一次nvim 等待插件安装完成
 rm -rf ~/.config/nvim
-git clone https://github.com/KyleDeng/nvim.git -b v095 ~/.config/nvim
+git clone https://github.com/KyleDeng/nvim.git ~/.config/nvim  # git@github.com:KyleDeng/nvim.git
 # 按照readme配置
 
 # ranger
@@ -168,6 +168,11 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
 
 # go
+
+# clean
+sudo apt autoclean
+sudo apt clean
+sudo apt autoremove
 
 
 
