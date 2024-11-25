@@ -171,6 +171,16 @@ pip3 install poetry
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
 
+# python2
+wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz
+tar xzf Python-2.7.18.tgz
+cd Python-2.7.18
+sudo ./configure --enable-optimizations
+sudo make altinstall
+python2.7 -V
+which python2.7
+sudo ln -s /usr/local/bin/python2.7 /usr/local/bin/python2
+
 # go
 
 # 删除snap
