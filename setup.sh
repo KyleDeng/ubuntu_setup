@@ -1,6 +1,22 @@
 #!/bin/bash
 # Base: Ubuntu24.04LST
 
+# 更换软件源
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo vim /etc/apt/sources.list
+"
+deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+"
+
 # update
 sudo apt-get update
 sudo apt-get upgrade
@@ -16,6 +32,7 @@ sudo apt install python3-venv
 
 # install
 sudo apt install build-essential -y
+sudo apt-get install libsystemd-dev -y
 sudo apt-get install clangd -y
 sudo apt install tree -y
 sudo apt install curl -y
@@ -26,6 +43,14 @@ sudo apt-get install neofetch -y
 sudo apt install lcov -y
 sudo apt-get install bear -y
 sudo apt-get install tofrodos -y  # fromdos/todos
+sudo apt-get install vim -y
+sudo apt install xclip -y
+sudo apt-get install ripgrep -y
+sudo apt install fd-find -y
+sudo apt install python3.8 -y
+sudo apt-get install ninja-build -y
+sudo apt install cmake -y  # cmake --version
+sudo apt-get install cmake-curses-gui  # ccmake --version
 # 重启一次
 
 # nodejs
@@ -36,9 +61,6 @@ sudo npm install --global yarn
 sudo apt-get remove libreoffice-common
 sudo apt-get remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot gnome-mines cheese transmission-common gnome-orca gnome-sudoku
 
-# cmake
-sudo apt install cmake -y  # cmake --version
-sudo apt-get install cmake-curses-gui  # ccmake --version
 
 # git
 sudo apt install git  # git --version
@@ -104,6 +126,9 @@ git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim
 git clone https://github.com/KyleDeng/nvim.git ~/.config/nvim  # git@github.com:KyleDeng/nvim.git
 # 按照readme配置
+cd ~/.local/share/nvim/lazy/coc.nvim
+yarn install
+yarn build
 
 # ranger
 sudo apt-get install ranger
