@@ -27,6 +27,7 @@ sudo apt install pipx -y  # 打开云枢
 sudo ln -s /usr/bin/pipx /usr/bin/pip
 sudo apt install python3-pip -y  # sudo mv /usr/lib/python3.12/EXTERNALLY-MANAGED /usr/lib/python3.12/EXTERNALLY-MANAGED.bak
 sudo apt install python3-venv
+sudo apt install python3.8-venv
 # export PATH=$PATH:$HOME/.local/bin/
 # 重启一次
 
